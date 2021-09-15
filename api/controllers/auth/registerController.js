@@ -1,12 +1,14 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
+const { use } = require('../../routes/auth')
+const useragent = require('express-useragent')
 
 const User = mongoose.model('User')
 
 const register = async (req, res, next) => {
   var user = new User()
 
-  var { fullName, username, password, email, birthDate } = req.body
+  var { fullName, username, password, email, birthDate, from } = req.body
 
   if (username && password && email) {
     if (password.length <= 8) {
@@ -24,6 +26,7 @@ const register = async (req, res, next) => {
       user.birthDate = birthDate
       user.fullName = fullName
       user.registerDate = Date.now()
+      user.registered_from = from ? from : "undefined"
       user.save((err, doc) => {
         if (err) {
           if(err.code == 11000){

@@ -22,6 +22,7 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
+  registered_from: String,
   registerDate: {
     type: Date,
     default: Date.now(),

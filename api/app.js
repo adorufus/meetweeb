@@ -4,16 +4,19 @@ require('./models/db')
 const express = require('express')
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const useragent = require('express-useragent')
 const app = express()
 const routers = require('./routes/index')
 const PORT = process.env.PORT
 
 app.use(bodyParser.json())
 app.use(cors())
+app.use(useragent.express())
 
 app.get('/', (req, res) => {
     res.status(403).json({
-        "message": "Access Unauthorized!"
+        "message": "Access Unauthorized!",
+        "ua": req.useragent
     })
 })
 
