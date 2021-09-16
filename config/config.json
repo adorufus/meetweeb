@@ -1,7 +1,9 @@
 {
     "development": {
         "PORT": 3000,
-        "MONGO_URL": "mongodb://localhost:27017/meetweeb"
+        "MONGO_URL": "mongodb://localhost:27017/meetweeb",
+        "JWT_SECRET": "kontolmbledush",
+        "JWT_EXP": "1h"
     },
     "production": {
         "PORT": 80,

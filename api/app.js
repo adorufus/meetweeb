@@ -1,5 +1,6 @@
 require('../config/config')
 require('./models/db')
+require('./middlewares/passport') 
 
 const express = require('express')
 const bodyParser = require('body-parser')
@@ -7,10 +8,12 @@ const cors = require('cors')
 const useragent = require('express-useragent')
 const app = express()
 const routers = require('./routes/index')
+const passport = require('passport')
 const PORT = process.env.PORT
 
 app.use(bodyParser.json())
 app.use(cors())
+app.use(passport.initialize())
 app.use(useragent.express())
 
 app.get('/', (req, res) => {

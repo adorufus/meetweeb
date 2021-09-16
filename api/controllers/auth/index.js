@@ -1,6 +1,7 @@
 const root = {
-    loginController: require('./loginControllers'),
-    registerController: require('./registerController')
+    loginController: require('./loginController'),
+    registerController: require('./registerController'),
+    userController: require('./userController')
 }
 
 module.exports = root;
